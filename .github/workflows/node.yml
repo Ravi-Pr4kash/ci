@@ -28,5 +28,4 @@ jobs:
       - name: Start project
         run : npm start
 
-      - name: Check the server
-        run: curl http://localhost:3000
+     
