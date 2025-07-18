@@ -21,11 +21,12 @@ jobs:
       - name:  Install dependencies
         run: npm install
 
-      - name: 🛠️ Build project
+      - name:  Build project
         run: npm run build
+       
 
-      - name:  Test server response
-        run: |
-          npm start &
-          sleep 5
-          curl http://localhost:3000
+      - name: Start project
+        run : npm start
+
+      - name: Check the server
+        run: curl http://localhost:3000
