@@ -12,7 +12,9 @@ jobs:
         steps:
             - name: Install Dependencies
               run : npm install
+
+            - name:  Build project
+              run: npm run build   
             
             - name: Start Server
               run: npm run dev
-              
