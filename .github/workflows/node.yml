@@ -1,20 +1,31 @@
-name: CI- Node.js Express App
+name: CI - Node.js Express App
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
-jobs: 
-    build:
-        runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Install Dependencies
-              run : npm install
+    steps:
+      - name:  Checkout code
+        uses: actions/checkout@v3
 
-            - name:  Build project
-              run: npm run build   
-            
-            - name: Start Server
-              run: npm run dev
+      - name:  Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name:  Install dependencies
+        run: npm install
+
+      - name: 🛠️ Build project
+        run: npm run build
+
+      - name:  Test server response
+        run: |
+          npm start &
+          sleep 5
+          curl http://localhost:3000
